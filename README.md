@@ -1,202 +1,259 @@
-# ☕ Java Learning Roadmap 🚀
+<div align="center">
 
-::: {align="center"}
-![Java](https://img.shields.io/badge/Java-Learning-orange?style=for-the-badge)
-![OOP](https://img.shields.io/badge/OOP-Complete-blue?style=for-the-badge)
-![Status](https://img.shields.io/badge/Progress-Full%20Notes-success?style=for-the-badge)
+<!-- Animated Typing Header -->
+<a href="https://github.com/nibrit/Learn-Java-Basics">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=32&duration=3000&pause=1000&color=F89820&center=true&vCenter=true&width=600&lines=☕+Learn+Java+Basics;From+Zero+to+OOP+Hero;Java+%7C+OOP+%7C+Advanced+Concepts" alt="Typing SVG" />
+</a>
 
-### ✨ *From Java Fundamentals → OOP → Advanced Concepts*
+<br/>
 
-``` text
- ██████╗  █████╗ ██╗   ██╗ █████╗ 
- ██╔══██╗██╔══██╗██║   ██║██╔══██╗
- ██║  ██║███████║██║   ██║███████║
- ██║  ██║██╔══██║╚██╗ ██╔╝██╔══██║
- ██████╔╝██║  ██║ ╚████╔╝ ██║  ██║
- ╚═════╝ ╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝
-```
-:::
+<!-- Badges -->
+![Java](https://img.shields.io/badge/Language-Java-F89820?style=for-the-badge&logo=openjdk&logoColor=white)
+![OOP](https://img.shields.io/badge/Paradigm-OOP-0A66C2?style=for-the-badge&logo=java&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Complete%20Notes-2EA44F?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blueviolet?style=for-the-badge)
 
-------------------------------------------------------------------------
+<br/>
+
+> **A structured, beginner-to-intermediate Java learning resource** covering core syntax, OOP principles, memory management, and advanced concepts — all in one place.
+
+<br/>
+
+[![View Notes](https://img.shields.io/badge/📄%20View%20Full%20Notes-Click%20Here-F89820?style=for-the-badge)](./Java%20Notes%20-%20Learn%20Basic%20to%20Medium%20Level%20Java.md)
+
+</div>
+
+---
+
+## 📚 Table of Contents
+
+- [🎯 Topics Covered](#-topics-covered)
+- [🗺 Learning Flow](#-learning-flow)
+- [📂 Repository Structure](#-repository-structure)
+- [🚀 End Goals](#-end-goals)
+- [🤝 Contributing](#-contributing)
+
+---
 
 ## 🎯 Topics Covered
 
-### 🌱 Part 1 --- Java Foundations
+### 🌱 Part 1 — Java Foundations
 
--   Programming Basics
--   Language Types & Translators
--   Platform Dependent vs Independent
--   JDK / JRE / JVM / JIT
--   Java Compilation & Execution Flow
--   Java Program Structure
--   Printing Statements
--   Tokens
--   Keywords & Identifiers
--   Variables & Datatypes
--   Local vs Global Variables
--   Default Values
--   Comments
--   Operators
--   Type Casting
--   Scanner Class (Dynamic Input)
--   Increment / Decrement Operators
--   Relational & Logical Operators
--   Conditional Operator
+<details>
+<summary><b>Click to expand</b></summary>
 
-------------------------------------------------------------------------
+| Topic | Description |
+|---|---|
+| Programming Basics | What is programming, how computers think |
+| Language Types & Translators | Compiled vs Interpreted, Assembler, Compiler, Interpreter |
+| Platform Independent | Write Once, Run Anywhere (WORA) |
+| JDK / JRE / JVM / JIT | Java ecosystem components and their roles |
+| Compilation & Execution Flow | `.java` → `.class` → JVM execution |
+| Program Structure | Class, main method, anatomy of a Java program |
+| Printing Statements | `System.out.print`, `println`, `printf` |
+| Tokens & Keywords | Identifiers, keywords, literals, operators |
+| Variables & Datatypes | Primitive types, reference types, size/range |
+| Scope & Default Values | Local vs global variables, default initialization |
+| Operators | Arithmetic, relational, logical, bitwise, ternary |
+| Type Casting | Widening, narrowing, explicit casting |
+| Scanner Class | Reading user input dynamically |
 
-### 🔁 Control Flow & Logic Building
+</details>
 
--   Decision Making
-    -   `if`
-    -   `if-else`
-    -   `else-if`
-    -   `switch`
--   Loops
-    -   `for`
-    -   `while`
-    -   `do-while`
--   Jump Statements
-    -   `break`
-    -   `continue`
-    -   `return`
+---
 
-------------------------------------------------------------------------
+### 🔁 Part 2 — Control Flow & Logic Building
 
-### 🧠 Methods & Data Structures
+<details>
+<summary><b>Click to expand</b></summary>
 
--   Methods
--   Method Types
--   Method Calling
--   Arrays
--   Array Traversal
--   Arrays Utility Class
--   Recursion
-    -   Factorial
-    -   Fibonacci
-    -   Merge Sort
-    -   Power Functions
-
-------------------------------------------------------------------------
-
-### ⚡ Static & Memory Concepts
-
--   Static Variables
--   Static Methods
--   Static Initializers
--   Static Context
--   Class Loading Process
-
-Memory Areas:
-
-``` text
-Method Area
-Static Pool Area
-Stack Area
-Heap Area
+**Decision Making**
+```
+if  →  if-else  →  else-if ladder  →  switch
 ```
 
-------------------------------------------------------------------------
+**Loops**
+```
+for  →  while  →  do-while
+```
 
-### 🏗 Object-Oriented Programming
+**Jump Statements**
+```
+break  →  continue  →  return
+```
+
+</details>
+
+---
+
+### 🧠 Part 3 — Methods & Data Structures
+
+<details>
+<summary><b>Click to expand</b></summary>
+
+| Topic | Subtopics |
+|---|---|
+| Methods | Declaration, parameters, return types, method types |
+| Arrays | 1D/2D arrays, traversal, `Arrays` utility class |
+| Recursion | Factorial, Fibonacci, Merge Sort, Power functions |
+
+</details>
+
+---
+
+### ⚡ Part 4 — Static & Memory Concepts
+
+<details>
+<summary><b>Click to expand</b></summary>
+
+**Static Members**
+- Static Variables, Static Methods, Static Initializers, Static Context, Class Loading Process
+
+**Java Memory Areas**
+
+```
+┌─────────────────────────────────────────────────┐
+│                  JVM Memory                     │
+├─────────────┬──────────────┬────────────────────┤
+│ Method Area │ Static Pool  │    Stack Area       │
+│  (bytecode) │  (statics)   │  (method frames)   │
+├─────────────┴──────────────┴────────────────────┤
+│                  Heap Area                      │
+│           (objects & instance vars)             │
+└─────────────────────────────────────────────────┘
+```
+
+</details>
+
+---
+
+### 🏗️ Part 5 — Object-Oriented Programming
+
+<details>
+<summary><b>Click to expand</b></summary>
 
 #### 🧩 Class & Object
-
--   Object Creation
--   Non-static Members
--   Constructors
--   Constructor Chaining
--   `this` keyword
+- Object creation, non-static members, constructors, constructor chaining, `this` keyword
 
 #### 🔒 Encapsulation
-
--   Data Hiding
--   Getters & Setters
--   POJO Class
+- Data hiding, getters & setters, POJO class design
 
 #### 🔗 Relationships
-
--   Composition
--   Aggregation
+- **Composition** — strong "has-a" (lifetime dependency)
+- **Aggregation** — weak "has-a" (independent lifetime)
 
 #### 🧬 Inheritance
 
--   Single
--   Multi-level
--   Hierarchical
--   Multiple (Interface)
--   Hybrid
--   `extends`
--   `implements`
--   `super()`
+| Type | Keyword |
+|---|---|
+| Single | `extends` |
+| Multi-level | `extends` (chained) |
+| Hierarchical | Multiple classes `extend` one parent |
+| Multiple (via Interface) | `implements` |
+| Hybrid | Combination of the above |
 
 #### 🎭 Polymorphism
-
--   Method Overloading
--   Constructor Overloading
--   Method Shadowing
--   Variable Shadowing
--   Method Overriding
+- Method Overloading, Constructor Overloading
+- Method Overriding, Method/Variable Shadowing
 
 #### 🎯 Abstraction
+- Abstract Class, Abstract Method, Concrete Class
 
--   Abstract Class
--   Abstract Method
--   Concrete Class
+#### 🌐 Interfaces
+- Regular Interface, Functional Interface, Marker Interface, Multiple Inheritance via Interface
 
-#### 🌐 Interface
+</details>
 
--   Regular Interface
--   Functional Interface
--   Marker Interface
--   Multiple Inheritance
+---
 
-------------------------------------------------------------------------
+### 🛠️ Part 6 — Advanced Java Concepts
 
-### 🛠 Advanced Java Concepts
+<details>
+<summary><b>Click to expand</b></summary>
 
--   Singleton Class
--   Reference Variables
--   Upcasting & Downcasting
--   Generalization
--   ClassCastException
--   Final Keyword
-    -   Final Variable
-    -   Final Method
-    -   Final Class
+| Topic | Description |
+|---|---|
+| Singleton Class | Restricting instantiation to one object |
+| Reference Variables | How objects are referenced in memory |
+| Upcasting & Downcasting | Type conversion between parent/child |
+| Generalization | Writing flexible, reusable code |
+| `ClassCastException` | Runtime type mismatch handling |
+| `final` Keyword | Final variable, method, and class rules |
 
-------------------------------------------------------------------------
+</details>
+
+---
 
 ## 🗺 Learning Flow
 
-``` mermaid
-graph TD;
-
-A[Java Basics] --> B[Variables & Datatypes]
-B --> C[Operators]
-C --> D[Control Statements]
-D --> E[Loops]
-E --> F[Methods]
-F --> G[Arrays]
-G --> H[Recursion]
-H --> I[Static]
-I --> J[Class & Object]
-J --> K[OOP Concepts]
-K --> L[Advanced Java]
+```
+Java Basics
+    │
+    ├── Variables & Datatypes
+    │       │
+    │       └── Operators & Type Casting
+    │               │
+    │               └── Control Statements (if, switch)
+    │                       │
+    │                       └── Loops (for, while, do-while)
+    │                               │
+    │                               └── Methods
+    │                                       │
+    │                                       └── Arrays & Recursion
+    │                                               │
+    │                                               └── Static Concepts
+    │                                                       │
+    │                                                       └── Class & Object
+    │                                                               │
+    │                                                               └── OOP (Encapsulation, Inheritance,
+    │                                                                        Polymorphism, Abstraction)
+    │                                                                               │
+    │                                                                               └── Advanced Java ✅
 ```
 
-------------------------------------------------------------------------
+---
 
-## 🚀 End Goal
+## 📂 Repository Structure
 
-✅ Java Fundamentals\
-✅ Problem Solving\
-✅ OOP Mastery\
-✅ Memory Management Concepts\
-✅ Advanced Java Foundation
+```
+Learn-Java-Basics/
+│
+├── 📄 README.md                                      ← You are here
+└── 📘 Java Notes - Learn Basic to Medium Level Java.md  ← Full learning notes
+```
 
-------------------------------------------------------------------------
+---
 
-::: {align="center"}
-### ⭐ Keep Coding • Keep Building • Keep Learning ☕
-:::
+## 🚀 End Goals
+
+| Goal | Status |
+|---|---|
+| Java Fundamentals | ✅ Complete |
+| Problem Solving Logic | ✅ Complete |
+| OOP Mastery | ✅ Complete |
+| Memory Management Concepts | ✅ Complete |
+| Advanced Java Foundation | ✅ Complete |
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome!
+
+1. Fork the repository
+2. Create your branch: `git checkout -b feature/improve-notes`
+3. Commit your changes: `git commit -m "Add: topic explanation"`
+4. Push to the branch: `git push origin feature/improve-notes`
+5. Open a Pull Request
+
+---
+
+<div align="center">
+
+**If these notes helped you, consider giving a ⭐ — it means a lot!**
+
+<br/>
+
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=F89820&height=100&section=footer)
+
+</div>
