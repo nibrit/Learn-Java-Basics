@@ -1,9 +1,7 @@
 <div align="center">
 
-<!-- Animated Typing Header -->
-<a href="https://github.com/nibrit/Learn-Java-Basics">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=32&duration=3000&pause=1000&color=F89820&center=true&vCenter=true&width=600&lines=☕+Learn+Java+Basics;From+Zero+to+OOP+Hero;Java+%7C+OOP+%7C+Advanced+Concepts" alt="Typing SVG" />
-</a>
+<!-- Animated Banner Header -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=F89820&height=200&section=header&text=Learn%20Java%20Basics&fontSize=50&fontColor=ffffff&fontAlignY=38&desc=From%20Fundamentals%20%E2%86%92%20OOP%20%E2%86%92%20Advanced%20Concepts&descAlignY=58&descSize=18&animation=fadeIn" alt="Learn Java Basics" width="100%"/>
 
 <br/>
 
