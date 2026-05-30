@@ -3851,73 +3851,107 @@ abstract inteface C
             // ename is : miller eid is : 101
 
 ```
-equals() method
-== operator is used to check the address of object but equals() method is used to check the content of the object.
+### equals() method
 
-   
-   Emp e1 = new Emp("miller",101);
-   Emp e2 = new Emp("scott",102);
-   Emp e3 = new Emp("miller",101);
+ `==` operator is used to check the address of object but 
+ **equals()** method is used to check the content of the object.
 
-   System.out.println(e1 == e2); // false
-   System.out.println(e1 == e3); // false
-in this example every object having different address.
 
-for that even though our e1 and e3 content is same but we are comparing by using == operator , it will give the output as false.
+ ```java
+    
+    Emp e1 = new Emp("miller",101);
+    Emp e2 = new Emp("scott",102);
+    Emp e3 = new Emp("miller",101);
 
-to check the content / to compare the content we can use equals() method.
+    System.out.println(e1 == e2); // false
+    System.out.println(e1 == e3); // false
+ ```
 
-   System.out.printn(e1.equals(e2)); // false 
-   System.out.printn(e1.equals(e3)); // false 
-in the above example e1 and e3 both content is same then also it will give false.
+ * in this example every object having different address.
 
-if we want to get true for that we have to override the equals() method.
+ * for that even though our e1 and e3 content is same but we are comparing by using `==` operator , it will give the output as false.
 
-   @Override
-     public boolean equals(Object obj)
+
+ * to check the content / to compare the content we can use `equals()` method.
+
+ ```java
+    System.out.printn(e1.equals(e2)); // false 
+    System.out.printn(e1.equals(e3)); // false 
+ ```
+  * in the above example e1 and e3 both content is same then also it will give false.
+
+  * if we want to get true for that *we have to override the equals()* method.
+
+
+  ```java
+     @Override
+       public boolean equals(Object obj)
+       {
+           // downcast 
+           Emp e = (Emp) obj;
+
+           return this.ename.equals(e.ename) &&
+                  this.eid == e.eid;
+       }
+
+  ```
+
+
+### hashCode()
+
+ * this method is present in Object class, it will return one unique integer number.
+
+ * if we override `equals()` method we **should override hashcode() method**
+
+ ```java
+    System.out.println(e1.hashCode());
+    System.out.println(e2.hashCode());
+    System.out.println(e3.hashCode());
+ ```
+
+ * for this above code it will create 3 unique number.
+   here e1 and e3 both are equals but there hashCode number is different, that does not make any sense.
+
+* means if `both objects are equal` there **hashcode should be same**, for that we have do *override of hashcode method.*
+
+**How to override hashCode() method**
+
+*step 1:* we have to import *Objects* class from `java.util` package.
+
+*step 2 :* we have to override 
+
+ ```java
+    @Override 
+     public int hashCode()
      {
-         // downcast 
-         Emp e = (Emp) obj;
 
-         return this.ename.equals(e.ename) &&
-                this.eid == e.eid;
      }
-hashCode()
-this method is present in Object class, it will return one unique integer number.
+ ```
 
-if we override equals() method we should override hashcode() method
+*step 3:* from this hashCode() method we have to generate unique number.
+    
+   that we can do by using *Objects.hashCode()* method or 
+   *Objects.hash()* method.
 
-   System.out.println(e1.hashCode());
-   System.out.println(e2.hashCode());
-   System.out.println(e3.hashCode());
-for this above code it will create 3 unique number. here e1 and e3 both are equals but there hashCode number is different, that does not make any sense.
+   *Objects.hashCode()* can take 1 parameter.
+   *Objects.hash()* can take more than 1 parameters.
 
-means if both objects are equal there hashcode should be same, for that we have do override of hashcode method.
-
-How to override hashCode() method
-
-step 1: we have to import Objects class from java.util package.
-
-step 2 : we have to override
-
-   @Override 
-    public int hashCode()
-    {
-
-    }
-step 3: from this hashCode() method we have to generate unique number.
-
-that we can do by using Objects.hashCode() method or Objects.hash() method.
-
-Objects.hashCode() can take 1 parameter. Objects.hash() can take more than 1 parameters.
-
+```java
     @Override 
      public int hashCode()
      {
             return Objects.hash(ename,eid);
      }
-finalize()
-this method is present in Object class , it is called by Garbage Collector System.gc() before the destroy of any object.
+```
+
+
+### finalize()
+
+* this method is present in Object class , it is called by Garbage Collector **System.gc()** before the destroy of any object.
+
+
+```java
+
         class School
         {
             String sub1 ;
@@ -3948,23 +3982,39 @@ this method is present in Object class , it is called by Garbage Collector Syste
                     System.gc();
             }
         }
-clone()
-The clone() method in Java is used to create an exact copy (a duplicate) of an existing object.
-steps to make clone of any object
 
-step 1: implement Clonable interface
+```
 
+
+
+### clone() 
+
+* The `clone()` method in Java is used to create an exact copy (a duplicate) of an existing object.
+
+**steps to make clone of any object**
+
+*step 1:*  `implement Clonable interface`
+
+```java
          class School implements Clonable
          {
 
          }
-step2: override the clone() method
+```
+
+*step2:*  `override the clone() method`
+
+```java
 
     @Override
     public Object clone() throws CloneNotSupportedException {
           return super.clone();
     }
-step 3: use the clone() method and handle the exception
+```
+
+*step 3:* `use the clone() method and handle the exception`
+
+```java
 
           School s1 = new School("java","python");
            System.out.println(s1);
@@ -3977,22 +4027,41 @@ step 3: use the clone() method and handle the exception
          {
             System.out.println(e);
          }
-Package in Java
-built-in package in java
 
-access modifier
-it is used for visibility and accessibility of identifiers in java.
+```
 
-in java we have 4 access modifiers.
 
-public , protected , default , private
+### Package in Java
 
-method chaining
-it is the process of calling more than one method in single statement.
 
-for performing this all the methods return type should be class type and it will return the current object by using this keyword.
+**built-in package in java**
+
+
+
+
+### access modifier
+
+  * it is used for visibility and accessibility  of identifiers in java.
+
+  * in java we have 4 access modifiers. 
+
+  * public , protected , default , private 
+
+
+
+
+
+### method chaining 
+
+* it is the process of calling more than one method in single statement. 
+
+* for performing this all the methods return type should be class type and it will return the current object by using `this` keyword.
 
 eg:
+
+```java
+
+
 
 class Practice
 {
@@ -4024,11 +4093,22 @@ class Practice
 
     }
 }
-method local inner class
-any class we are declaring inside method is called method local inner class.
+```
 
-the accessibility of this class will be inside this method only.
 
+
+
+
+
+
+### method local inner class 
+
+   * any class we are declaring inside method is called method local inner class.
+
+   * the accessibility of this class will be inside this method only.
+
+
+```java
    
     class Outer
       {
@@ -4046,15 +4126,24 @@ the accessibility of this class will be inside this method only.
                 ob.m2();
           }
       }
-Anonymous class
-any class that does not have any name,is called Anonymous class.
-syntax
+```
 
-interfacename ref_var = new interfacename{
 
-       @Override
-};
+### Anonymous class
+
+* any class that does not have any name,is called Anonymous class.
+
+*syntax*
+
+    interfacename ref_var = new interfacename{
+
+           @Override
+    };
+
+
 eg:
+
+```java
 
 interface Caluculate
 {
@@ -4074,17 +4163,27 @@ class Calulator
         } 
     }
 }
-lamda expression
-anonymous block of code that is used to manage functional interface.
 
-it has introduced in java 8 features.
+```
 
-syntax :
 
+### lamda expression
+
+* anonymous block of code that is used to manage functional interface.
+
+* it has introduced in java 8 features.
+
+*syntax :*
+
+```java
          
      interfaceName refVariable = (parameters)->{ }
-eg:
+```
 
+
+eg: 
+
+```java
   @FunctionalInterface
 interface Operation
 {
@@ -4128,32 +4227,46 @@ public class Lamda {
       System.out.println("addition is : "+op3.addition(30,60))  ;
     }
 }
-Exception
-Exception is an unwanted event that occurs during the execution of program.
 
-it happens becuase of some abnormal statement.
+```
 
-for this the normal flow of a program execution will be errupted.
 
-exception happens suddenly.
 
-eg: going to attend world class best santanu sir batch, suddenly rain came.
+### Exception 
 
- santanu sir is teaching suddenly power cut happen.
-diagram of Exception class hierarchy
+ * Exception is an unwanted event that occurs during the execution of program.
 
-types of Exception
+ * it happens becuase of some abnormal statement.
 
-Unchecked Exception
-Checked Exception
-Unchecked Exception
+ * for this the normal flow of a program execution will be errupted.
 
-the exception, compiler is not aware of or compiler does not know about the exception is called as Unchecked Exception.
+ * exception happens suddenly.
 
-Unchecked Exception is compile time success but run time error.
+ eg: 
+     going to attend world class best **santanu sir** batch, suddenly rain came.
 
-example 1
+     santanu sir is teaching suddenly power cut happen.
 
+
+*diagram of Exception class hierarchy*
+
+
+**types of Exception**
+
+* 1. Unchecked Exception 
+* 2. Checked Exception 
+
+
+**Unchecked Exception**
+
+  * the exception, compiler is not aware of or compiler does not know about the exception is called as Unchecked Exception. 
+
+  * Unchecked Exception is compile time success but run time error.
+
+
+*example 1*
+
+```java
  
  class A
  {
@@ -4168,10 +4281,14 @@ example 1
              System.out.println("end");
      }
  }
-note: for the abnormal statement sop(a/b), it occurs Exception and it will stop the normal execution flow.
+```
 
-example 2:
+*note:* for the abnormal statement  `sop(a/b)`, it occurs Exception and it will stop the normal execution flow.
 
+
+*example 2:*
+
+```java
        class Ex2
        {
            public static void main(String args[])
@@ -4185,9 +4302,14 @@ example 2:
                 System.out.println(arr[2]);
            }
        }
-note this is java.lang.ArrayIndexOutOfBoundsException
+```
 
-example 3:
+*note* this is `java.lang.ArrayIndexOutOfBoundsException` 
+
+
+*example 3:*
+
+```java
 
         class Example3
         {
@@ -4197,10 +4319,14 @@ example 3:
                     System.out.println(s1.toUpperCase());
                 }
         }
-note: this is  java.lang.NullPointerException
+```
 
-example 4:
+*note:* this is ` java.lang.NullPointerException`
 
+
+*example 4:*
+
+```java
       class A
       {}
       class B extends A
@@ -4212,13 +4338,17 @@ example 4:
               B ob =(B) new A();
         }
       }
-note this is java.lang.ClassCastException
+```
+*note* this is `java.lang.ClassCastException`
 
-Checked Exception
 
-Exception that is known by compiler is called as Checked Exception.
-example
+**Checked Exception**
 
+   * Exception that is known by compiler is called as Checked Exception.
+
+*example*
+
+```java
         class Example1
         {
                 public static void main(String args[])
@@ -4230,246 +4360,291 @@ example
                         }
                 }
         }
-Exception Handling
-when we are writing any abnormal statement in our prgoram, it will generate one Throwable type object.
+```
 
-after that immediately it won't stop the execution, it will search for any referece variable who can store the object.
 
-now programmer task is to handle the Exception by storing the Throwable type of object.
 
-for that we need try and catch block
+### Exception Handling
 
-example
+ * when we are writing any abnormal statement in our prgoram, it will generate one **Throwable type object**.
 
-       
- class Handle
-   {
-    public static void main(String[] args) {  
-       int a = 30 , b = 0 ;
-       System.out.println("start");    ✅
-       try{
-           System.out.println(a+b);  ✅
-           System.out.println(a/b);
-           System.out.println(a-b); ❌
-           System.out.println(a*b); ❌
-       }
-       catch(ArithmeticException e)
-       {
-           System.out.println("your problem I have handled"); ✅
-       }
-       System.out.println("end");
+ * after that immediately it won't stop the execution, it will search for any referece variable who can store the object.
 
- }   
-}
-we can write multiple try block and multiple catch block
+ * now programmer task is to handle the Exception by storing the Throwable type of object.
 
-example
+ * for that we need **try and catch block** 
 
-    public class Handle2 {
-   
-   public static void main(String[] args) {
-       
-       System.out.println("start");
+ *example*
 
-       int arr[]={2,3,4,5,6};
-       String s = null ;
-
-       // ! first try and catch block
-   
-       try
-       {
-           System.out.println(30/0);
-
-       }
-       catch(ArithmeticException e)
-       {
-             System.out.println("arithmetic exception is handled");
-       }
-   
-       // ! 2nd try and catch block
-
-       try{
-           System.out.println(s.toUpperCase());
-       }
-       catch(NullPointerException e)
-       {
-          System.out.println("nullpointer exception is handled");
-       }
-      
-
-       // ! 3rd try and catch 
-
-       try{
-
-           System.out.println(arr[10]);
-       }
-       catch(ArrayIndexOutOfBoundsException e)
-       {
-          System.out.println("ArrayIndexOutOfBoundsException is handled");
-       }
-       System.out.println("end");
-
-   }
-}
-try block with multiple catch block
-
-syntax
-
-      try{
-      }
-      catch()
-      {}
-      catch()
-      {}
-      .
-      .
-      .
-      catch()
-      {}
-    public class handle3 {
-   
-   public static void main(String[] args) {
-       
-       System.out.println("start");
-       int a[] ={1,2,3,4};
-       String s = null;
-       try{
-           System.out.println(10+5);
-           System.out.println(10-5);
-           System.out.println(a[2]);
-           System.out.println(a[10]);
-           System.out.println(s.toUpperCase());
-           System.out.println(30/0);
-       }
-       catch(ArithmeticException e)
-       {
-         System.out.println("ArithmeticException handled");
-       }
-       catch(NullPointerException e)
-       {
-           System.out.println("NullPointerException is handled");
-       }
-       catch(ArrayIndexOutOfBoundsException e)
-       {
-           System.out.println("ArrayIndexOutOfBoundsException is handled");
-       }
-       System.out.println("end");
-   }
-}
-instead of writing multiple catch block we can use only one catch block.
-
-when we are using multiple catch block, we have to handle all types of possible exception that might occur in my program.
-
-to overcome this if we take only one catch block, this catch block should have capability to handle any kind of exception.
-
-for that in the catch block we will take Exception class reference variable because it can store any kind of exception (checked and unchecked) by providing Generalization.
-
-example
-
-   public class handle4 {
-   
-   public static void main(String[] args) {    
-       System.out.println("start");
-       int a[] ={1,2,3,4};
-       String s = null;
-       try{
-           System.out.println(10+5);
-           System.out.println(10-5);
-           System.out.println(a[2]);
-           // System.out.println(a[10]);
-           // System.out.println(s.toUpperCase());
-           System.out.println(30/0);
-       }
-       catch(Exception e)
-       {
-              System.out.println("exception is handled");
-       }
-       System.out.println("end");
-   }
-}
-try block
-
-A try block in Java is a container used to enclose code that might throw an exception.
-
-we can't write try block alone, there should be atleast one catch or finally block with try.
-
-we can write one try block and multiple catch block.
-
-catch block
-
-catch block is used to handle the exception by storing the Throwable type object, that is created in try block.
-
-we can't write only catch block without try block.
-
-syntax
-
-    
-    try{
-
-    }
-    catch( Exceptionhandlingclass ref )
+ ```java
+        
+  class Handle
     {
+     public static void main(String[] args) {  
+        int a = 30 , b = 0 ;
+        System.out.println("start");    ✅
+        try{
+            System.out.println(a+b);  ✅
+            System.out.println(a/b);
+            System.out.println(a-b); ❌
+            System.out.println(a*b); ❌
+        }
+        catch(ArithmeticException e)
+        {
+            System.out.println("your problem I have handled"); ✅
+        }
+        System.out.println("end");
+
+  }   
+}
+ ```
+
+
+ **we can write multiple try block and multiple catch block**
+
+ *example*
+
+ ```java
+     public class Handle2 {
+    
+    public static void main(String[] args) {
+        
+        System.out.println("start");
+
+        int arr[]={2,3,4,5,6};
+        String s = null ;
+
+        // ! first try and catch block
+    
+        try
+        {
+            System.out.println(30/0);
+
+        }
+        catch(ArithmeticException e)
+        {
+              System.out.println("arithmetic exception is handled");
+        }
+    
+        // ! 2nd try and catch block
+
+        try{
+            System.out.println(s.toUpperCase());
+        }
+        catch(NullPointerException e)
+        {
+           System.out.println("nullpointer exception is handled");
+        }
+       
+
+        // ! 3rd try and catch 
+
+        try{
+
+            System.out.println(arr[10]);
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+           System.out.println("ArrayIndexOutOfBoundsException is handled");
+        }
+        System.out.println("end");
 
     }
-in catch block order maintaining is very much important.
-example
+}
 
-   
-     public static void main(String args[])
-     {
-          
+ ```
+
+
+ **try block with multiple catch block**
+
+ *syntax*
+
+ ```java
+
        try{
-           System.out.println(10/0);
        }
-       catch(ArithmeticException e)
-       {
-            System.out.println("arithmetic exception is handled");
-       }
-       catch(RuntimeException e)
-       {
-           System.out.println("RuntimeException is handled");
-       }
-       catch(Exception e)
-       {
-           System.out.println("exception is handled");
-       }
+       catch()
+       {}
+       catch()
+       {}
+       .
+       .
+       .
+       catch()
+       {}
+ ```
 
-       catch(Throwable e)
-       {
-           System.out.println("Throwable exception is handled");
-       }
-      
+ ```java
+
+
+     public class handle3 {
+    
+    public static void main(String[] args) {
+        
+        System.out.println("start");
+        int a[] ={1,2,3,4};
+        String s = null;
+        try{
+            System.out.println(10+5);
+            System.out.println(10-5);
+            System.out.println(a[2]);
+            System.out.println(a[10]);
+            System.out.println(s.toUpperCase());
+            System.out.println(30/0);
+        }
+        catch(ArithmeticException e)
+        {
+          System.out.println("ArithmeticException handled");
+        }
+        catch(NullPointerException e)
+        {
+            System.out.println("NullPointerException is handled");
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println("ArrayIndexOutOfBoundsException is handled");
+        }
+        System.out.println("end");
+    }
+}
+ ```
+
+
+ * instead of writing multiple catch block we can use only one catch block.
+
+ * when we are using multiple catch block, we have to handle all types of possible exception that might occur in my program.
+
+ * to overcome this if we take only one catch block, this catch block should have capability to handle any kind of exception.
+
+ * for that in the catch block we will take **Exception class** reference variable because it can store any kind of exception (checked and unchecked) by providing `Generalization`.
+
+ *example*
+
+ ```java
+    public class handle4 {
+    
+    public static void main(String[] args) {    
+        System.out.println("start");
+        int a[] ={1,2,3,4};
+        String s = null;
+        try{
+            System.out.println(10+5);
+            System.out.println(10-5);
+            System.out.println(a[2]);
+            // System.out.println(a[10]);
+            // System.out.println(s.toUpperCase());
+            System.out.println(30/0);
+        }
+        catch(Exception e)
+        {
+               System.out.println("exception is handled");
+        }
+        System.out.println("end");
+    }
+}
+
+ ```
+
+
+ **try block**
+
+ * A try block in Java is a container used to enclose code that might throw an exception.
+
+ * we can't write try block alone, there should be atleast one catch or finally block with try.
+
+ * we can write one try block and multiple catch block.
+
+
+ **catch block**
+
+ * catch block is used to handle the exception by storing the Throwable type object, that is created in try block.
+
+ * we can't write only catch block without try block.
+
+ *syntax*
+
+ ```java
+     
+     try{
+
      }
-note : the above example is possible but if we do opposite that is not possible.
+     catch( Exceptionhandlingclass ref )
+     {
 
-                    Throwable 
-                        |
-                    Exception
-                        |
-                RuntimeException
-                        |
-                 ArithmeticException
-finally block
+     }
 
-finally block is used in Exception handling with try block or with try and catch block.
+ ```
 
-this block will execute everytime regardless of exception is there or not.
+ * in catch block order maintaining is very much important.
 
-what is throws keyword
+ *example*
 
-In Java, the throws keyword is used in a method declaration to indicate that the method might throw one or more specific exceptions during its execution.
+ ```java
+    
+      public static void main(String args[])
+      {
+           
+        try{
+            System.out.println(10/0);
+        }
+        catch(ArithmeticException e)
+        {
+             System.out.println("arithmetic exception is handled");
+        }
+        catch(RuntimeException e)
+        {
+            System.out.println("RuntimeException is handled");
+        }
+        catch(Exception e)
+        {
+            System.out.println("exception is handled");
+        }
 
-It informing the compiler and the caller that this method won't handle the exception itself and that the caller is responsible for dealing with it.
+        catch(Throwable e)
+        {
+            System.out.println("Throwable exception is handled");
+        }
+       
+      }
+ ```
 
-Exception Propagation
+ *note :*  the above example is possible but if we do opposite that is not possible.
 
-transfering the Exception Handling from one method to the caller method is called as Exception Propagation.
+                        Throwable 
+                            |
+                        Exception
+                            |
+                    RuntimeException
+                            |
+                     ArithmeticException
 
-for checked Exception, propagation can be done explicitely by using throws keyword.
 
-if it is unchecked Exception, propagation will happen implicitely. we need not to use throws keyword.
+**finally block**
 
-example: Exception Propagation for Checked Exception
+  * finally block is used in Exception handling with try block or with try and catch block.
+
+  * this block will execute everytime regardless of exception is there or not.
+
+
+**what is throws keyword**
+
+* In Java, the `throws` keyword is used in a method declaration to indicate that the method might throw one or more specific exceptions during its execution. 
+
+* It  informing the compiler and the caller that this method won't handle the exception itself and that the caller is responsible for dealing with it.
+
+
+**Exception Propagation**
+
+* transfering the Exception Handling from one method to the caller method is called as `Exception Propagation.`
+
+* for checked Exception, propagation can be done explicitely by using `throws` keyword.
+
+* if it is unchecked Exception, propagation will happen implicitely. we need not to use `throws` keyword.
+
+*example: Exception Propagation for Checked Exception*
+
+```java
+
 
 public class PropagationEx {
 
@@ -4501,12 +4676,20 @@ public class PropagationEx {
 
     }
 }
-what is Throwable class
 
-The java.lang.Throwable class is the root superclass of all errors and exceptions in the Java language.
-methods => toString(),getMessage(),printStackTrace()
 
-example
+```
+
+
+**what is Throwable class**
+
+* The java.lang.Throwable class is the root superclass of all errors and exceptions in the Java language.
+
+*methods* => `toString(),getMessage(),printStackTrace()`
+
+*example*
+
+```java
 
       class Example
       {
@@ -4525,18 +4708,24 @@ example
         }
     }
 }
-throw keyword
+```
 
-The throw keyword in Java is used to explicitly throw an exception from a method or any block of code.
 
-mainly it is used for throwing custom exception
+**throw keyword**
 
-it can only throw one exception object at a time.
+* The `throw` keyword in Java is used to explicitly throw an exception from a method or any block of code.
 
-syntax
+* mainly it is used for throwing *custom exception*
 
-throw object Of Exception type("message")
-example
+* it can only throw one exception object at a time.
+
+*syntax*
+    
+    throw object Of Exception type("message")
+
+*example*
+
+```java
 
 public class Learningthrow {
     public static void main(String[] args)  {
@@ -4552,18 +4741,28 @@ public class Learningthrow {
         System.out.println("end");
     }
 }
-differnce between throw and throws
 
-custom Exception
-A custom exception (also called a user-defined exception) in Java is a specific exception class created by a programmer to handle error scenarios based on their application.
+```
 
-cutom Exception we can create both for checked and unchecked.
 
-how to create Checked Custom Excepton
+**differnce between throw and throws**
 
-we have to create one class and that class should inherit from Exception Class
-syntax
 
+
+
+### custom Exception
+
+* A custom exception (also called a user-defined exception) in Java is a specific exception class created by a programmer to handle error scenarios based on  their application.
+
+* cutom Exception we can create both for checked and unchecked.
+
+**how to create Checked Custom Excepton**
+
+* we have to create one class and that class should inherit from *Exception Class*
+
+*syntax*
+
+```java
      class classname extends Exception
      {
           classname(String msg)
@@ -4571,7 +4770,14 @@ syntax
             super(msg);
           }
      }
-example
+```
+
+
+*example*
+
+```java
+
+
 
 // !  Checked Custom Exception 
 
@@ -4608,11 +4814,17 @@ public class Custom1{
         }
     }
 }
-unchecked Custom Exception
+```
 
-first we have to create our own class , this class should inherit RuntimeException class.
-syntax
 
+
+**unchecked Custom Exception**
+
+* first we have to create our own class , this class should inherit *RuntimeException* class.
+
+*syntax*
+
+```java
      class classname extends RuntimeException
      {
           classname(String msg)
@@ -4620,7 +4832,12 @@ syntax
             super(msg);
           }
      }
-example
+```
+
+*example*
+
+```java
+
 
 // ! unchecked custom exception 
 
@@ -4651,22 +4868,30 @@ public class Custom2 {
         Bike.ride();
     }
 }
-difference between final , finally and finalize
 
-final
+```
 
-it is one keyword, modifier
-we can apply it to variable,class,methods.
-it is used to make constant.
-final variable we can't change the value, final class we can't inherit final method we can't override.
-finally
 
-finally is one block.
-it is written with try or try and catch block.
-it will execute everytime irrespective of exception is handled or not handled.
-finalize
+**difference between final , finally and finalize**
 
-finalize is one method.
-it is present in Object class.
-it is used for cleanup (to remove the object from the heap area who does not have any reference.)
-it is called by System.gc() method.
+*final*
+  
+  * it is one keyword, modifier
+  * we can apply it to variable,class,methods.
+  * it is used to make constant.
+  * final variable we can't change the value, 
+    final class we can't inherit
+    final method we can't override.
+
+*finally*
+ 
+ * finally is one block.
+ * it is written with try or try and catch block.
+ * it will execute everytime irrespective of exception is handled or not handled.
+
+*finalize*
+  
+  * finalize is one method. 
+  * it is present in Object class.
+  * it is used for cleanup (to remove the object from the heap area who does not have any reference.)
+  * it is called by *System.gc()* method.
